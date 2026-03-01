@@ -70,7 +70,10 @@ with tab1:
             with st.expander("View Automated Insights", expanded=True):
                 # RESTORED: The highly technical, journal-quality SHAP explanation text
                 st.write(f"**Calculated Baseline:** The model evaluates this student's foundational performance based on their previous score of {prev_marks}%.")
-                
+                if prev_marks >= 85 and prediction < 50:
+                    st.write("🛡️ **Historical Buffer:** Despite severe current behavioral deficits (low sleep/attendance), the student's exceptionally high historical performance is acting as a mathematical buffer, preventing a total score collapse.")
+                elif prev_marks >= 85:
+                    st.write("🌟 **Historical Advantage:** The student's strong foundational knowledge is providing a significant positive baseline to their final expected score.")
                 if attendance < 75:
                     st.write("⚠️ **Critical Flag:** Attendance is significantly below threshold. This is mathematically the highest risk factor currently dragging down the predicted score.")
                 if sleep_hours < 6.0:
